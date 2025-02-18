@@ -16,8 +16,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const docId = urlParams.get('id');
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
+export const db = getFirestore(app);
 
 // id 값에 맞는 맴버 정보, 세부 페이지 사용
 export async function getMember_detail(docId) {
@@ -92,13 +91,12 @@ export async function getMember() {
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${leader.name}</h5>
-                            <p class="card-text">${leader.goal}</p>
+                            <p class="card-text">${leader.introduction}</p>
                             <p class="card-text"><small class="text-body-secondary">${leader.blog}</small></p>
                         </div>
                     </div>
                 </div>
             </div>`
-            console.log(leader_html);
             $("#left_side").append(leader_html);
 
             //console.log("팀장 데이터:", data);  // 테이터 출력 확인 완료
@@ -110,7 +108,6 @@ export async function getMember() {
 
         querySnapshot_member.forEach((doc) => {
             let member = doc.data();
-            console.log(member);
 
             if (C_div) {
 
@@ -123,15 +120,13 @@ export async function getMember() {
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${member.name}</h5>
-                            <p class="card-text">${member.goal}</p>
+                            <p class="card-text">${member.introduction}</p>
                             <p class="card-text"><small class="text-body-secondary">${member.blog}</small></p>
                         </div>
                     </div>
                 </div>
             </div>`
                 $("#right_side").append(member_html);
-
-                console.log("2");
                 C_div = false;
             } else {
 
@@ -144,7 +139,7 @@ export async function getMember() {
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${member.name}</h5>
-                            <p class="card-text">${member.goal}</p>
+                            <p class="card-text">${member.introduction}</p>
                             <p class="card-text"><small class="text-body-secondary">${member.blog}</small></p>
                         </div>
                     </div>
