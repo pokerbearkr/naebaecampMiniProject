@@ -81,10 +81,27 @@ export async function getMember() {
         const querySnapshot_leader = await getDocs(q_leader);
 
         querySnapshot_leader.forEach((doc) => {
-            let data = doc.data();
+            let leader = doc.data();
 
+            let leader_html = `
+                    <div class="card mb-3" style="max-width: 80%;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <a href= "detail.html?id=${doc.id}"><img src="${leader.image}" class="img-fluid rounded-start" alt="${leader.image}"></a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${leader.name}</h5>
+                            <p class="card-text">${leader.goal}</p>
+                            <p class="card-text"><small class="text-body-secondary">${leader.blog}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            console.log(leader_html);
+            $("#left_side").append(leader_html);
 
-            //데이터 처리
+            //console.log("팀장 데이터:", data);  // 테이터 출력 확인 완료
         });
 
         // 팀원 쿼리 실행
@@ -93,14 +110,49 @@ export async function getMember() {
 
         querySnapshot_member.forEach((doc) => {
             let member = doc.data();
+            console.log(member);
 
             if (C_div) {
 
-                //데이터 처리
+                let member_html = `
+                    <div class="card mb-3" style="max-width: 80%;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <a href= "detail.html?id=${doc.id}"><img src="${member.image}" class="img-fluid rounded-start" alt="${member.image}"></a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${member.name}</h5>
+                            <p class="card-text">${member.goal}</p>
+                            <p class="card-text"><small class="text-body-secondary">${member.blog}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+                $("#right_side").append(member_html);
+
+                console.log("2");
                 C_div = false;
             } else {
 
-                //데이터 처리
+                let member_html = `
+                    <div class="card mb-3" style="max-width: 80%;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <a href= "detail.html?id=${doc.id}"><img src="${member.image}" class="img-fluid rounded-start" alt="${member.image}"></a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${member.name}</h5>
+                            <p class="card-text">${member.goal}</p>
+                            <p class="card-text"><small class="text-body-secondary">${member.blog}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+                $("#left_side").append(member_html);
+
+
                 C_div = true;
             }
         });
