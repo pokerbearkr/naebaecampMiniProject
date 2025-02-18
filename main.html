@@ -9,70 +9,147 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <style>
-    .PSJ_IMG {
-        margin: 8% 10% 5% 10%;
+
+    header{
+        margin: 5% 0 0 5%;
         display: flex;
-        align-items: center;
-
-        font-size: 24px;
+    }
+    /* 좌우 분할 테스트 */
+    .content-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .main_left{
+        margin: 5% 0 0 5%;
+        width: 45%;
+        background-color: red;
+    }
+    .main_right{
+        margin: 5% 0 0 5%;
+        width: 45%;
+        background-color: blue;
     }
 
-    .PSJ_IMG>img {
-        width: 200px;
-        height: 200px;
-        margin-right: 50px;
-
-    }
-
-    .container-fluid {
-        display: flex;
-        background-color: aqua;
-        margin-bottom: 10%;
-    }
-
-    .card>img {
-        width: 100%;
-        object-fit: cover;
-    }
-
-    .left {
-        background-color: bisque;
-        padding: 20px;
-        margin: 0 10% 0 10%;
-    }
-
-    .right {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
-
-    .box {
-        padding: 30px;
-    }
-
-    .top-left {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .top-right {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .bottom-left {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .bottom-right {
-        grid-column: 2;
-        grid-row: 2;
-    }
 </style>
 
 <body>
+    <!-- 팀 이미지, 팀명 팀 설명 -->
+    <header>
+        <img
+            src="" alt="팔색조 이미지">
+        <div>
+            <h1>팔색조</h1>
+            <p>다른 사람들과 조화를 이뤄 서로 배우며 성장하는 팀</p>
+        </div>
+    </header>
+
+    <!-- main_left 3인 main_right 2인 배치, 모두 같은 형식 사용-->
+    <div class="content-container">
+
+        <div>
+
+        </div>
+
+        <div class="main_left">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+
+        <div class="main_right">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+    <footer>
+        <ul>
+            <li>
+              <a href="https://github.com/pokerbearkr/naebaecampMiniProject" alt="github링크">
+                <p>Git Hub</p>
+              </a>
+            </li>
+            <li>
+              <a href="" alt="팀노션">
+                <p>Team Pal-saek-jo</p>
+              </a>
+            </li>
+          </ul>
+    </footer>
+</body>
+
+
+<!-- <body>
     <div class="PSJ_IMG">
         <img
             src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fe7.pngegg.com%2Fpngimages%2F532%2F598%2Fpng-clipart-az-alkmaar-sbv-vitesse-omiya-ardija-fc-twente-number-1-trademark-football-player.png&type=a340">
@@ -183,6 +260,6 @@
             </div>
         </div>
     </div>
-</body>
+</body> -->
 
 </html>
