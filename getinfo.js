@@ -37,7 +37,33 @@ export async function getMember_detail(docId) {
         let goal = member['goal'];
         let merit = member['merit'];
 
-        // 데이터 처리
+        let blog_html = `
+        <a href="${blog}" target="_blank" rel="noopener noreferrer"
+      ><img
+              class="logo"
+              alt="go to blog"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7lOSyj2I6filE23x924KqfH_DmKiHgUEdA&s"
+      /></a>`
+
+        let img = `<img
+              id="profile_img"
+              src="${image}"
+              alt="profile image"
+              width="360"
+              height="360"
+      />`
+
+        $("#name_db").text(name);
+        $("#info_db").text(introduction);
+        $("#1st_item").text(MBTI);
+        $("#2nd_item").text(style);
+        $("#3rd_item").text(goal);
+        $("#4th_item").text(merit);
+        $("#member_img").append(img);
+        $("#blog_db").append(blog_html);
+
+
+
 
     } else {
         console.log("해당 문서가 존재하지 않습니다.");
@@ -56,8 +82,8 @@ export async function getMember() {
 
         querySnapshot_leader.forEach((doc) => {
             let data = doc.data();
-            
-            
+
+
             //데이터 처리
         });
 

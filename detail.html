@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>상세 페이지</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="detail.css" />
   <style>
     header {
@@ -15,10 +18,18 @@
       display: flex;
     }
   </style>
+  <script type="module">
+    const urlParams = new URLSearchParams(window.location.search);
+    const docId = urlParams.get('id');
+    console.log(docId);
+    import { getMember_detail } from "./getinfo.js";
+    await getMember_detail(docId);
+  </script>
 </head>
+
 <body>
   <header>
-    <img src="" alt="팔색조 이미지">
+    <a href="./main.html"><img src="" alt="팔색조 이미지"></a>
     <div>
       <h1>팔색조</h1>
       <p>다른 사람들과 조화를 이뤄 서로 배우며 성장하는 팀</p>
@@ -26,23 +37,31 @@
   </header>
   <div class="root">
     <div class="left">
-      <img
+      <div id="member_img">
+
+        <!-- <img
               id="profile_img"
               src="https://placehold.co/400"
               alt="profile image"
               width="360"
               height="360"
-      />
-      <p id="name">윤정환</p>
+      /> -->
+      </div>
+      <p id="name"><span id="name_db">이름</span></p>
       <p id="info">
-        간단한 소개를 여기에 입력?
+        <span id="info_db">간단한 자기소개</span>
       </p>
-      <a href="https://dungbik.github.io/" target="_blank" rel="noopener noreferrer"
+      <div id="blog_db">
+
+
+      </div>
+      <!-- <a href="https://dungbik.github.io/" target="_blank" rel="noopener noreferrer"
       ><img
               class="logo"
               alt="go to blog"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7lOSyj2I6filE23x924KqfH_DmKiHgUEdA&s"
-      /></a>
+      /></a> -->
+
     </div>
     <div class="right">
       <div>
@@ -54,7 +73,7 @@
 
           <div class="article_text">
             <p class="article_text_title">MBTI</p>
-            <desc class="article_text_desc">ISTJ</desc>
+            <desc class="article_text_desc"><span id="1st_item">ISTJ</span> </desc>
           </div>
         </li>
         <li class="article">
@@ -62,10 +81,11 @@
 
           <div class="article_text">
             <p class="article_text_title">협업 스타일</p>
-            <desc class="article_text_desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy
-              text ever since the 1500s,</desc>
+            <desc class="article_text_desc"><span id="2nd_item">Lorem Ipsum is simply dummy text of the printing and
+                typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s,</span>
+            </desc>
           </div>
         </li>
         <li class="article">
@@ -73,10 +93,11 @@
 
           <div class="article_text">
             <p class="article_text_title">목표</p>
-            <desc class="article_text_desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy
-              text ever since the 1500s,</desc>
+            <desc class="article_text_desc"><span id="3rd_item">Lorem Ipsum is simply dummy text of the printing and
+                typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s,</span>
+            </desc>
           </div>
         </li>
         <li class="article">
@@ -84,10 +105,11 @@
 
           <div class="article_text">
             <p class="article_text_title">자신의 강점</p>
-            <desc class="article_text_desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy
-              text ever since the 1500s,</desc>
+            <desc class="article_text_desc"><span id="4th_item">Lorem Ipsum is simply dummy text of the printing and
+                typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s,</span>
+            </desc>
           </div>
         </li>
       </ul>
@@ -101,12 +123,15 @@
         </a>
       </li>
       <li>
-        <a href="" alt="팀노션">
+        <a href="https://www.notion.so/teamsparta/8-1982dc3ef51481aea1afcc8297e1fbf5" alt="팀노션">
           <p>Team Pal-saek-jo</p>
         </a>
       </li>
     </ul>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
