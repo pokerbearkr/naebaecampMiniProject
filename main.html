@@ -10,13 +10,90 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="guestbook.css">
     <link rel="stylesheet" href="main.css">
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getMember, db } from "./getinfo.js";
+        await getMember();
+
+        // firebase 초기화 중복으로 주석 후 테스트
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // const firebaseConfig = {
+        //     apiKey: "AIzaSyAi5YVhQc5oDn0drgOlPLe7ALCg5ngf5_o",
+        //     authDomain: "jin-s-sparta.firebaseapp.com",
+        //     projectId: "jin-s-sparta",
+        //     storageBucket: "jin-s-sparta.firebasestorage.app",
+        //     messagingSenderId: "389040870011",
+        //     appId: "1:389040870011:web:39090e7b8918935c4108de",
+        //     measurementId: "G-5X7HN07C1J"
+        // };
+
+
+        // // Firebase 인스턴스 초기화
+        // const app = initializeApp(firebaseConfig);
+        // const db = getFirestore(app);
+
+        $("#postbtn").click(async function () {
+            let title = $('#title').val();
+            let content = $('#content').val();
+
+            let doc = {
+                'title': title,
+                'content': content,
+            };
+            await addDoc(collection(db, "guestbooks"), doc);
+            alert('방명록 작성 완료!')
+            window.location.reload();
+        })
+
+        let docs = await getDocs(collection(db, "guestbooks"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+
+            let title = row['title'];
+            let content = row['content'];
+            let docId = doc.id; // Firestore 문서의 고유 ID부여
+
+            let temp_html = `<div class="card mb-3" data-id="${docId}">
+      <div class="card-header d-flex justify-content-between">
+        <span class="fw-bold">${title}</span>
+        <button class="delete-button" type="button" data-id="${docId}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+         </button>
+      </div>
+      <div class="card-body">
+        <p class="card-text">${content}</p>
+      </div>
+    </div>`;
+
+            $('#makeguestbook').append(temp_html);
+        });
+
+        $(document).on("click", ".delete-button", async function () {
+            let docId = $(this).attr("data-id"); // 클릭한 버튼(방명록데이터터)의 데이터 ID 가져오기
+
+            if (confirm("방명록을 지우시겠습니까?")) {
+                await deleteDoc(doc(db, "guestbooks", docId)); // Firestore에서 삭제
+                $(`div[data-id='${docId}']`).remove(); // 화면에서 삭제
+                alert("방명록이 삭제되었습니다!");
+            }
+        });
+
+    </script>
+
 </head>
 
 <body>
-    <script type="module">
-        import { getMember } from "./getinfo.js";
-        await getMember();
-    </script>
 
     <!-- 팀 이미지, 팀명 팀 설명 -->
     <header>
@@ -55,33 +132,13 @@
                 <textarea class="form-control" id="content" placeholder="내용을 입력하세요" rows="3" required></textarea>
             </div>
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">등록</button>
+                <button id="postbtn" type="button" class="btn btn-primary">등록</button>
             </div>
         </form>
 
         <!-- 방명록 목록 -->
-        <div class="guestbook-list">
-            <div class="card mb-3">
-                <div class="card-header d-flex justify-content-between">
-                    <span class="fw-bold">방명록 제목 예시</span>
-                    <small class="text-muted">2025년 2월 17일 오후 2시 17분</small>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">이곳에 방명록 내용이 들어갑니다.</p>
-                </div>
-            </div>
-
-            <div class="card mb-3">
-                <div class="card-header d-flex justify-content-between">
-                    <span class="fw-bold">또 다른 방명록 제목</span>
-                    <small class="text-muted">2025년 2월 18일 오후 1시 10분</small>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">또 다른 방명록 내용 예시입니다.</p>
-                </div>
-            </div>
-        </div>
-
+        <div id="makeguestbook" class="guestbook-list">
+            
     </div>
     <footer class="footer-container">
         <div class="footer-card">
