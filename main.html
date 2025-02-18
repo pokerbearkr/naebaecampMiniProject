@@ -9,37 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="guestbook.css">
+    <link rel="stylesheet" href="main.css">
 </head>
-<style>
-    .main_rogo {
-        width: 150px;
-        margin-right: 5%;
-    }   
-
-    header {
-        margin: 5% 0 0 5%;
-        display: flex;
-    }
-
-    /* 좌우 분할 테스트 */
-    .content-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .main_left {
-        margin-top: 5%;
-        margin-left: 10%;
-        width: 37%;
-    }
-
-    .main_right {
-        margin-top: 5%;
-        margin-left: 3%;
-        width: 37%;
-    }
-</style>
 
 <body>
     <script type="module">
@@ -112,20 +83,25 @@
         </div>
 
     </div>
-    <footer>
-        <ul>
-            <li>
-                <a href="https://github.com/pokerbearkr/naebaecampMiniProject" alt="github링크">
-                    <p>Git Hub</p>
+    <footer class="footer-container">
+        <div class="footer-card">
+            <img src="https://avatars.githubusercontent.com/u/9919?v=4" class="footer-avatar">
+            <div class="footer-info">
+                <a href="https://github.com/pokerbearkr/naebaecampMiniProject" class="footer-link">
+                    <p class="repo-name">Git Hub</p>
                 </a>
-            </li>
-            <li>
-                <a href="https://www.notion.so/teamsparta/8-1982dc3ef51481aea1afcc8297e1fbf5" alt="팀노션">
-                    <p>Team Pal-saek-jo</p>
+            </div>
+        </div>
+        <div class="footer-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" class="footer-avatar">
+            <div class="footer-info">
+                <a href="https://www.notion.so/teamsparta/8-1982dc3ef51481aea1afcc8297e1fbf5" class="footer-link">
+                    <p class="repo-name">Notion</p>
                 </a>
-            </li>
-        </ul>
+            </div>
+        </div>
     </footer>
+
 </body>
 
 </html>
