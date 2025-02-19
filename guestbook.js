@@ -106,7 +106,7 @@ export async function loadGuestbook(page) {
             </div>
             <div class="card-body">
                 <div class="comment-text">${formattedContent}</div> <!-- ✅ 줄바꿈 적용된 상태 -->
-                <p class="text-muted" style="text-align:right;">${date.toLocaleString()}</p>
+                <p class="text-muted" style="text-align:right; margin-bottom: 0;">${date.toLocaleString()}</p>
             </div>
         </div>`;
         $('#makeguestbook').append(temp_html);
