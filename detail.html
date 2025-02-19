@@ -25,8 +25,8 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const docId = urlParams.get('id');
-    import { getMember_detail } from "./getinfo.js";
-    await getMember_detail(docId);
+    import { getDetail } from "./getinfo.js";
+    await getDetail(docId);
   </script>
 </head>
 
