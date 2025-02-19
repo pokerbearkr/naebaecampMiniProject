@@ -7,10 +7,9 @@
   <link rel="stylesheet" href="guestbook.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="module">
-    import { loadGuestbook, postGuestbook } from "./guestbook.js";
+    import { postGuestbook } from "./guestbook.js";
 
     $(document).ready(() => {
-      loadGuestbook(1);
       $("#postbtn").click(postGuestbook);
     });
   </script>
