@@ -113,6 +113,11 @@ export async function loadGuestbook(page) {
     });
 
     renderPaginationButtons();
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
 }
 
 
