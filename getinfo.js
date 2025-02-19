@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy, limit, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getFirestore, collection, doc, getDoc, getDocs, query, where, orderBy, limit, updateDoc, deleteDoc, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAOByWDp2SIqFeADum8YvTLW1EozAwatbQ",
@@ -71,6 +71,32 @@ export async function getMember_detail(docId) {
 
 // 메인에 사용
 export async function getMember() {
+
+    $("#postbtn").click(async function () {
+        let title = $('#title').val();
+        let content = $('#content').val();
+        let currentDate = new Date();
+
+        let doc = {
+            'title': title,
+            'content': content,
+            'date': currentDate,
+        };
+        await addDoc(collection(db, "guestbooks"), doc);
+        alert('방명록 작성 완료!')
+        window.location.reload();
+    })
+
+    $(document).on("click", ".delete-button", async function () {
+        let docId = $(this).attr("data-id"); // 클릭한 버튼(방명록데이터터)의 데이터 ID 가져오기
+
+        if (confirm("방명록을 지우시겠습니까?")) {
+            await deleteDoc(doc(db, "guestbooks", docId)); // Firestore에서 삭제
+            $(`div[data-id='${docId}']`).remove(); // 화면에서 삭제
+            alert("방명록이 삭제되었습니다!");
+        }
+    });
+
     try {
 
         const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
