@@ -1,0 +1,81 @@
+<style>
+  /* 하단 오른쪽 고정 및 가로 배치 */
+  .footer-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+  }
+
+  /* 공통 카드 스타일 */
+  .footer-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px 12px;
+    width: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .footer-card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* 아이콘 이미지 */
+  .footer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 15px;
+  }
+
+  /* 텍스트 정보 */
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 30px;
+  }
+
+  .footer-link {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  .footer-link:hover {
+    text-decoration: underline;
+    color: #0366d6;
+  }
+
+  .repo-name {
+    margin: 0;
+  }
+</style>
+
+<footer class="footer-container">
+  <div class="footer-card">
+    <img src="https://avatars.githubusercontent.com/u/9919?v=4" class="footer-avatar">
+    <div class="footer-info">
+      <a href="https://github.com/pokerbearkr/naebaecampMiniProject" class="footer-link">
+        <p class="repo-name">Git Hub</p>
+      </a>
+    </div>
+  </div>
+  <div class="footer-card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" class="footer-avatar">
+    <div class="footer-info">
+      <a href="https://www.notion.so/teamsparta/8-1982dc3ef51481aea1afcc8297e1fbf5" class="footer-link">
+        <p class="repo-name">Notion</p>
+      </a>
+    </div>
+  </div>
+</footer>

@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="guestbook.css">
     <link rel="stylesheet" href="main.css">
     <script type="module">
+        $(function () {
+            $('#header').load('header.html')
+            $('#footer').load('footer.html')
+        });
+
         // Firebase SDK 라이브러리 가져오기
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
@@ -94,71 +99,50 @@
 </head>
 
 <body>
-
     <!-- 팀 이미지, 팀명 팀 설명 -->
-    <header>
-        <img class ="main_rogo" src="data:image/jpeg;base64,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" alt="팔색조 이미지">
-        <div>
-            <h1>팔색조</h1>
-            <p>다른 사람들과 조화를 이뤄 서로 배우며 성장하는 팀</p>
-        </div>
-    </header>
+    <div id="header"></div>
 
-    <!-- main_left 3인 main_right 2인 배치, 모두 같은 형식 사용-->
-    <div class="content-container">
-        <div class="main_left" id="left_side">
+    <main>
+        <!-- main_left 3인 main_right 2인 배치, 모두 같은 형식 사용-->
+        <div class="content-container">
+            <div class="main_left" id="left_side">
 
-        </div>
-        <div class="main_right" id="right_side">
-
-        </div>
-
-    </div>
-    <div class="container guestbook-container">
-
-        <!-- 방명록 헤더 -->
-        <div class="guestbook-header">
-            <h2>📖 방명록</h2>
-        </div>
-
-        <!-- 방명록 입력 폼 -->
-        <form class="guestbook-form py-4">
-            <div class="mb-3">
-                <label for="title" class="form-label">이름</label>
-                <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" required>
             </div>
-            <div class="mb-3">
-                <label for="content" class="form-label">내용</label>
-                <textarea class="form-control" id="content" placeholder="내용을 입력하세요" rows="3" required></textarea>
-            </div>
-            <div class="d-flex justify-content-end">
-                <button id="postbtn" type="button" class="btn btn-primary">등록</button>
-            </div>
-        </form>
+            <div class="main_right" id="right_side">
 
-        <!-- 방명록 목록 -->
-        <div id="makeguestbook" class="guestbook-list">
-            
-    </div>
-    <footer class="footer-container">
-        <div class="footer-card">
-            <img src="https://avatars.githubusercontent.com/u/9919?v=4" class="footer-avatar">
-            <div class="footer-info">
-                <a href="https://github.com/pokerbearkr/naebaecampMiniProject" class="footer-link">
-                    <p class="repo-name">Git Hub</p>
-                </a>
             </div>
         </div>
-        <div class="footer-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" class="footer-avatar">
-            <div class="footer-info">
-                <a href="https://www.notion.so/teamsparta/8-1982dc3ef51481aea1afcc8297e1fbf5" class="footer-link">
-                    <p class="repo-name">Notion</p>
-                </a>
-            </div>
-        </div>
-    </footer>
 
+        <div class="container guestbook-container">
+            <!-- 방명록 헤더 -->
+            <div class="guestbook-header">
+                <h2>📖 방명록</h2>
+            </div>
+
+            <!-- 방명록 입력 폼 -->
+            <form class="guestbook-form py-4">
+                <div class="mb-3">
+                    <label for="title" class="form-label">이름</label>
+                    <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" required>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">내용</label>
+                    <textarea class="form-control" id="content" placeholder="내용을 입력하세요" rows="3" required></textarea>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button id="postbtn" type="button" class="btn btn-primary">등록</button>
+                </div>
+            </form>
+
+            <!-- 방명록 목록 -->
+            <div id="makeguestbook" class="guestbook-list">
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 프로젝트 깃 저장소, 노션 이동 -->
+    <div id="footer"></div>
 </body>
 
 </html>
