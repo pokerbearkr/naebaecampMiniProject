@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 // id 값에 맞는 맴버 정보, 세부 페이지 사용
-export async function getMember_detail(docId) {
+export async function getDetail(docId) {
     const docRef = doc(db, "member", docId);
     const docSnap = await getDoc(docRef);
 
@@ -70,7 +70,7 @@ export async function getMember_detail(docId) {
 
 
 // 메인에 사용
-export async function getMember() {
+export async function getMain() {
 
     $("#postbtn").click(async function () {
         let title = $('#title').val();
@@ -163,10 +163,8 @@ export async function getMember() {
             </div>`
             $("#left_side").append(leader_html);
 
-            //console.log("팀장 데이터:", data);  // 테이터 출력 확인 완료
         });
 
-        // 팀원 쿼리 실행
         const q_member = query(collection(db, "member"), where("position", "==", "팀원"));
         const querySnapshot_member = await getDocs(q_member);
 
