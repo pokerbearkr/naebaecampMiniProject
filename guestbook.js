@@ -90,13 +90,16 @@ export async function loadGuestbook(page) {
         let guestbook = doc.data();
         let date = new Date(guestbook.date.seconds * 1000);
 
+        // ✅ 🔥 Firestore에서 가져온 `content`의 줄바꿈을 `<br>` 태그로 변환하여 적용
+        let formattedContent = guestbook.content.replace(/\n/g, "<br>");
+
         let temp_html = `<div class="card mb-3" data-id="${doc.id}">
             <div class="card-header d-flex justify-content-between">
                 <span class="fw-bold">${guestbook.title}</span>
                 <button class="delete-button btn btn-danger btn-sm" type="button" data-id="${doc.id}">🗑️</button>
             </div>
             <div class="card-body">
-                <p class="card-text">${guestbook.content}</p>
+                <div class="comment-text">${formattedContent}</div> <!-- ✅ 줄바꿈 적용된 상태 -->
                 <p class="text-muted" style="text-align:right;">${date.toLocaleString()}</p>
             </div>
         </div>`;
@@ -106,10 +109,11 @@ export async function loadGuestbook(page) {
     renderPaginationButtons();
 }
 
+
 // **🔥 방명록 작성**
 export async function postGuestbook() {
     let title = $('#title').val();
-    let content = $('#content').val();
+    let content = $('#content').val().replace(/\n/g, "<br>"); // ✅ Firestore에 줄바꿈 적용하여 저장
     let currentDate = new Date();
 
     if (!title || !content) {
@@ -127,6 +131,7 @@ export async function postGuestbook() {
     alert('방명록이 등록되었습니다!');
     location.reload();
 }
+
 
 // **🔥 방명록 삭제**
 $(document).on("click", ".delete-button", async function () {
