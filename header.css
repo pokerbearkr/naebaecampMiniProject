@@ -1,0 +1,33 @@
+/* 헤더 스타일 */
+header {
+    margin: 5% 0 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    height: 120px;
+}
+
+/* 로고 스타일 */
+.main_logo {
+    display: flex;
+    align-items: center;
+}
+
+.main_logo img {
+    width: 150px;
+    margin-right: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+}
