@@ -129,10 +129,13 @@
     color: #385898;
 }
 
+/* ✅ 줄바꿈 문제 해결 */
 .comment-text {
     font-size: 12px;
     color: #000;
     line-height: 16px;
+    white-space: pre-wrap;  /* 🔥 줄바꿈 유지 */
+    word-break: break-word; /* 긴 단어도 자동 줄바꿈 */
 }
 
 .comment-actions {
