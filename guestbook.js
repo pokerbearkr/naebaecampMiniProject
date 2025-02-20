@@ -62,10 +62,18 @@ async function preloadPageReferences() {
 
 function renderPaginationButtons() {
     $("#pagination").empty();
+    let maxPagesToShow = 5; // ✅ 한 번에 표시할 최대 페이지 수
 
-    if (totalPages <= 1) return;
+    let startPage = Math.floor((currentPage - 1) / maxPagesToShow) * maxPagesToShow + 1;
+    let endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);
 
-    for (let i = 1; i <= totalPages; i++) {
+    // ✅ "이전" 버튼 추가 (현재 페이지가 6 이상일 경우)
+    if (startPage > 1) {
+        $("#pagination").append(`<button id="prevPage" class="btn btn-primary mx-1">이전</button>`);
+    }
+
+    // ✅ 페이지 번호 버튼 추가 (1~5 또는 이후 6~10)
+    for (let i = startPage; i <= endPage; i++) {
         let classInfo = '"page-btn btn mx-1';
         if (i === currentPage) {
             classInfo += ' btn-primary"';
@@ -76,16 +84,42 @@ function renderPaginationButtons() {
         $("#pagination").append(`<button class=${classInfo} data-page="${i}">${i}</button>`);
     }
 
+    // ✅ "다음" 버튼 추가 (현재 표시된 페이지가 마지막이 아닐 경우)
+    if (endPage < totalPages) {
+        $("#pagination").append(`<button id="nextPage" class="btn btn-primary mx-1">다음</button>`);
+    }
+
     $(".page-btn").click(async function () {
         let page = parseInt($(this).attr("data-page"));
         await loadGuestbook(page);
+    });
 
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: "smooth"
-        });
+    // ✅ "다음" 버튼 클릭 시 다음 5개 페이지 표시
+    $("#nextPage").click(async function () {
+        let nextStartPage = endPage + 1;
+        let nextEndPage = Math.min(nextStartPage + maxPagesToShow - 1, totalPages);
+
+        if (nextStartPage <= totalPages) {
+            currentPage = nextStartPage;
+            await loadGuestbook(currentPage);
+            renderPaginationButtons();
+        }
+    });
+
+    // ✅ "이전" 버튼 클릭 시 이전 5개 페이지 표시
+    $("#prevPage").click(async function () {
+        let prevStartPage = Math.max(1, startPage - maxPagesToShow);
+        let prevEndPage = prevStartPage + maxPagesToShow - 1;
+
+        if (prevStartPage >= 1) {
+            currentPage = prevEndPage;
+            await loadGuestbook(currentPage);
+            renderPaginationButtons();
+        }
     });
 }
+
+
 
 
 export async function loadGuestbook(page) {
