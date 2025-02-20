@@ -48,6 +48,7 @@ export async function getDetail(docId) {
               alt="profile image"
               width="360"
               height="360"
+              style="object-fit: cover;"
       />`
 
         $("#name_db").text(name);
@@ -113,7 +114,7 @@ export async function getMain() {
                     <div class="card mb-3" style="max-width: 80%;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <a href= "detail.html?id=${doc.id}"><img src="${member.image}" class="img-fluid rounded-start" alt="${member.image}"></a>
+                        <a href= "detail.html?id=${doc.id}"><img src="${member.image}" class="img-fluid rounded-start" style="width: 100%; height: 200px; object-fit: cover;" alt="${member.image}"></a>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -132,7 +133,7 @@ export async function getMain() {
                     <div class="card mb-3" style="max-width: 80%;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <a href= "detail.html?id=${doc.id}"><img src="${member.image}" class="img-fluid rounded-start" alt="${member.image}"></a>
+                        <a href= "detail.html?id=${doc.id}"><img src="${member.image}" class="img-fluid rounded-start" style="width: 100%; height: 200px; object-fit: cover;" alt="${member.image}"></a>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
