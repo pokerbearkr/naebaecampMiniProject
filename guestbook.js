@@ -79,6 +79,11 @@ function renderPaginationButtons() {
     $(".page-btn").click(async function () {
         let page = parseInt($(this).attr("data-page"));
         await loadGuestbook(page);
+
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
     });
 }
 
