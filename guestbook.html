@@ -15,7 +15,9 @@
       $('#footer').load('footer.html')
     });
 
-    import { postGuestbook } from "./guestbook.js";
+    import { postGuestbook, deleteGuestbook } from "./guestbook.js";
+
+    $(document).on("click", ".delete-button", deleteGuestbook);
 
     $(document).ready(() => {
       $("#postbtn").click(postGuestbook);

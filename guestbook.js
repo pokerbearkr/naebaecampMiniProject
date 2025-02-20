@@ -158,6 +158,16 @@ export async function postGuestbook() {
     location.reload();
 }
 
+export async function deleteGuestbook() {
+    let docId = $(this).attr("data-id"); // 클릭한 버튼(방명록데이터터)의 데이터 ID 가져오기
+    console.log("삭제 버튼 클릭")
+    if (confirm("방명록을 지우시겠습니까?")) {
+        await deleteDoc(doc(db, "guestbooks", docId)); // Firestore에서 삭제
+        location.reload();
+        alert("방명록이 삭제되었습니다!");
+    }
+}
+
 
 $(document).ready(async () => {
     await getTotalGuestbookCount();
