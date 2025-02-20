@@ -66,8 +66,14 @@ function renderPaginationButtons() {
     if (totalPages <= 1) return;
 
     for (let i = 1; i <= totalPages; i++) {
-        let button = `<button class="page-btn btn btn-outline-primary mx-1" data-page="${i}">${i}</button>`;
-        $("#pagination").append(button);
+        let classInfo = '"page-btn btn mx-1';
+        if (i === currentPage) {
+            classInfo += ' btn-primary"';
+        } else {
+            classInfo += ' btn-outline-primary"';
+        }
+
+        $("#pagination").append(`<button class=${classInfo} data-page="${i}">${i}</button>`);
     }
 
     $(".page-btn").click(async function () {
