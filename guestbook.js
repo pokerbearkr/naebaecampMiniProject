@@ -92,6 +92,11 @@ function renderPaginationButtons() {
     $(".page-btn").click(async function () {
         let page = parseInt($(this).attr("data-page"));
         await loadGuestbook(page);
+
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
     });
 
     // ✅ "다음" 버튼 클릭 시 다음 5개 페이지 표시
@@ -103,6 +108,11 @@ function renderPaginationButtons() {
             currentPage = nextStartPage;
             await loadGuestbook(currentPage);
             renderPaginationButtons();
+
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
         }
     });
 
@@ -115,6 +125,11 @@ function renderPaginationButtons() {
             currentPage = prevEndPage;
             await loadGuestbook(currentPage);
             renderPaginationButtons();
+
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
         }
     });
 }
