@@ -179,7 +179,7 @@
     border: none;
     background-color: transparent;
     padding: 0;
-    padding-left: 5px;
+    margin-left: 5px;
 }
 
 .card-header {
