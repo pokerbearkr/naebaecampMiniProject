@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 80px;
 }
 
 .main_left {
